@@ -17,11 +17,9 @@ def process_file(file_path):
         output_filename = f"{path_obj.stem}_no_bg.png"
         output_path = path_obj.parent / output_filename
 
-        # Proses penghapusan background
         img = Image.open(path_obj)
         output = remove(img)
         
-        # Simpan
         output.save(output_path)
         print(f"✅ Selesai: {output_filename}   ")
 
