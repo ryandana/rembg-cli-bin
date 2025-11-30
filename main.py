@@ -8,15 +8,12 @@ def process_file(file_path):
     try:
         path_obj = Path(file_path)
         
-        # Cek apakah file valid
         if not path_obj.exists() or not path_obj.is_file():
             print(f"⚠️  File tidak ditemukan: {file_path}")
             return
 
         print(f"⏳ Memproses: {path_obj.name}...", end="\r")
 
-        # Tentukan nama output: folder_sama/namafile_no_bg.png
-        # Output HARUS .png agar transparansi (alpha channel) tersimpan
         output_filename = f"{path_obj.stem}_no_bg.png"
         output_path = path_obj.parent / output_filename
 
@@ -33,7 +30,6 @@ def process_file(file_path):
 
 def main():
     parser = argparse.ArgumentParser(description="Hapus background gambar dan simpan di folder yang sama.")
-    # nargs='+' memungkinkan input banyak file sekaligus (contoh: img1.jpg img2.jpg atau *.png)
     parser.add_argument('files', nargs='+', help='List file gambar yang akan diproses')
     
     args = parser.parse_args()
